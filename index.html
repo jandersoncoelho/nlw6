@@ -23,19 +23,24 @@
   </head>
   <body>
     <header id="header">
-      <nav class="container">
+      <nav class="container show">
         <!-- Tag de título -->
         <a class="logo" href="#">beauty<span>salon</span>.</a>
+        <!-- menu -->
         <div class="menu">
           <!-- emmet ul>li*5 -->
-          <ul>
-            <li><a href="#home">Início</a></li>
-            <li><a href="#about">Sobre</a></li>
-            <li><a href="#services">Serviços</a></li>
-            <li><a href="#testimonials">Depoimentos</a></li>
-            <li><a href="#contact">Contate-nos</a></li>
+          <ul class="grid">
+            <li><a class="title" href="#home">Início</a></li>
+            <li><a class="title" href="#about">Sobre</a></li>
+            <li><a class="title" href="#services">Serviços</a></li>
+            <li><a class="title" href="#testimonials">Depoimentos</a></li>
+            <li><a class="title" href="#contact">Contate-nos</a></li>
           </ul>
-        </div>
+        </div> 
+        <!-- /menu -->
+        <div class="open">...</div>
+        <div class="close">X</div>
+
       </nav>
     </header>
 
@@ -49,7 +54,7 @@
             />
           </div>
           <div class="text">
-            <h1>Saúde natural para os seus cabelos</h1>
+            <h2 class="title">Saúde natural para os seus cabelos</h2>
             <p>
               Um salão exclusivo em Ituiutaba, especializado em tratamentos
               naturais.
@@ -75,7 +80,6 @@
       <section class="section" id="contact">
         <div class="container grid">Contate-nos</div>
       </section>
-
       
     </main>
 
