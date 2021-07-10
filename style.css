@@ -20,7 +20,7 @@ ul {
 
 /*VARIABLES*/
 :root {
-  --hue: 240;
+  --hue: 500;
   --header-height: 4.5rem;
   /*HSL COLOR MODE*/
   --base-color: hsl(var(--hue) 70% 25%);
