@@ -440,3 +440,12 @@ nav.show div.icon-close {
 #contact ul.grid {
   gap: 2rem;
 }
+
+#contact ul li {
+  display: flex;
+  align-items: center;
+}
+
+#contact ul li i {
+  color: var(--base-color);
+}
