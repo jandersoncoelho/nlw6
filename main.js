@@ -34,7 +34,7 @@ window.addEventListener('scroll', function () {
   }
 })
 
-/*fazendo car ossel com o swiper */
+/*fazendo car ossel com o swiper */ 
 const swiper = new Swiper('.swiper-container', {
   slidesPerView: 1,
   pagination: {
@@ -60,3 +60,14 @@ scrollReveal.reveal(`
   #contact .text, #contact .links
 `,
 { interval: 100 })
+
+/*Botão voltar ao topo */
+const backToTopButton = document.querySelector('.back-to-top')
+window.addEventListener('scroll',function () {
+  if (window.scrollY >= 600) {
+    backToTopButton.classList.add('show')
+  } else {
+    backToTopButton.classList.remove('show')
+  }
+
+}) 
