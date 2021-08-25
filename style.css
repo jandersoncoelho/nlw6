@@ -23,7 +23,7 @@ img {
   --header-height: 4.5rem;
 
   /* colors */
-  --hue: 159;
+  --hue: 240;
   /* HSL color mode */
   --base-color: hsl(var(--hue) 36% 57%);
   --base-color-second: hsl(var(--hue) 65% 88%);
@@ -175,7 +175,7 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a.active {
-  color: var(--base-color);
+  color: var(--base-color); 
 }
 
 nav ul li a::after {
@@ -658,3 +658,4 @@ footer .social a:hover {
   }
 }
 /* medium devices: 767 > */
+ 
