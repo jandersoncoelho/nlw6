@@ -305,20 +305,20 @@ nav.show div.icon-close {
   margin-bottom: 2rem;
 }
 
-/*====  ABOUT ============================ */
-#about {
+/*====  culto-online ============================ */
+#culto-online {
   background: white;
 }
 
-#about .container {
+#culto-online .container {
   margin: 0;
 }
 
-#about .image {
+#culto-online .image {
   position: relative;
 }
 
-#about .image::before {
+#culto-online .image::before {
   content: '';
   height: 100%;
   width: 100%;
@@ -329,16 +329,16 @@ nav.show div.icon-close {
   z-index: 0;
 }
 
-#about .image img {
+#culto-online .image img {
   position: relative;
 }
 
-#about .image img,
-#about .image::before {
+#culto-online .image img,
+#culto-online .image::before {
   border-radius: 0.25rem;
 }
 
-#about .text {
+#culto-online .text {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
 }
@@ -536,8 +536,8 @@ footer .social a:hover {
     text-align: left;
   }
 
-  /* about */
-  #about .container {
+  /* culto-online */
+  #culto-online .container {
     margin: 0 auto;
     grid-auto-flow: column;
   }
