@@ -1,94 +1,75 @@
-/*  abre e fecha o menu quando clicar no icone: hamburguer e x */
-const nav = document.querySelector('#header nav')
-const toggle = document.querySelectorAll('nav .toggle')
+const SCROLL_TO_TOP_OFFSET = 560
 
-for (const element of toggle) {
-  element.addEventListener('click', function () {
-    nav.classList.toggle('show')
-  })
-}
-
-/* quando clicar em um item do menu, esconder o menu */
-const links = document.querySelectorAll('nav ul li a')
-
-for (const link of links) {
-  link.addEventListener('click', function () {
-    nav.classList.remove('show')
-  })
-}
-
-/* mudar o header da página quando der scroll */
+/* Abre e fecha o menu ao clicar no ícone (hambúrguer e X) */
 const header = document.querySelector('#header')
-const navHeight = header.offsetHeight
+const nav = document.querySelector('#header nav')
+const toggleButtons = document.querySelectorAll('nav .toggle')
+
+toggleButtons.forEach((button) => {
+  button.addEventListener('click', () => nav.classList.toggle('show'))
+})
+
+/* Ao clicar em um item do menu, esconde o menu */
+const menuLinks = document.querySelectorAll('nav ul li a')
+
+menuLinks.forEach((link) => {
+  link.addEventListener('click', () => nav.classList.remove('show'))
+})
+
+/* Muda o header quando a página recebe scroll além da sua altura */
+const headerHeight = header.offsetHeight
 
 function changeHeaderWhenScroll() {
-  if (window.scrollY >= navHeight) {
-    // scroll é maior que a altura do header
-    header.classList.add('scroll')
-  } else {
-    // menor que a altura do header
-    header.classList.remove('scroll')
-  }
+  header.classList.toggle('scroll', window.scrollY >= headerHeight)
 }
 
-/* ScrollReveal: Mostrar elementos quando der scroll na página */
+/* ScrollReveal: mostra os elementos quando entram na tela */
 const scrollReveal = ScrollReveal({
   origin: 'top',
   distance: '30px',
   duration: 700,
-  reset: true
+  reset: true,
 })
 
 scrollReveal.reveal(
   `#home .image, #home .text,
   #about .image, #about .text,
   #services header, #services .card,
-  #testimonials header, #testimonials .testimonials
   #contact .text, #contact .links,
-  footer .brand, footer .social
-  `,
+  footer .brand, footer .social`,
   { interval: 100 }
 )
 
-/* Botão voltar para o topo */
+/* Botão de voltar ao topo */
 const backToTopButton = document.querySelector('.back-to-top')
 
-function backToTop() {
-  if (window.scrollY >= 560) {
-    backToTopButton.classList.add('show')
-  } else {
-    backToTopButton.classList.remove('show')
-  }
+function toggleBackToTopButton() {
+  backToTopButton.classList.toggle('show', window.scrollY >= SCROLL_TO_TOP_OFFSET)
 }
 
-/* Menu ativo conforme a seção visível na página */
-const sections = document.querySelectorAll('main section[id]')
+/* Destaca no menu a seção que está visível na tela */
+const sectionLinks = [...document.querySelectorAll('main section[id]')]
+  .map((section) => ({
+    section,
+    link: document.querySelector(`nav ul li a[href*="${section.id}"]`),
+  }))
+  .filter(({ link }) => link !== null)
+
 function activateMenuAtCurrentSection() {
   const checkpoint = window.pageYOffset + (window.innerHeight / 8) * 4
 
-  for (const section of sections) {
+  sectionLinks.forEach(({ section, link }) => {
     const sectionTop = section.offsetTop
-    const sectionHeight = section.offsetHeight
-    const sectionId = section.getAttribute('id')
+    const sectionBottom = sectionTop + section.offsetHeight
+    const isVisible = checkpoint >= sectionTop && checkpoint <= sectionBottom
 
-    const checkpointStart = checkpoint >= sectionTop
-    const checkpointEnd = checkpoint <= sectionTop + sectionHeight
-
-    if (checkpointStart && checkpointEnd) {
-      document
-        .querySelector('nav ul li a[href*=' + sectionId + ']')
-        .classList.add('active')
-    } else {
-      document
-        .querySelector('nav ul li a[href*=' + sectionId + ']')
-        .classList.remove('active')
-    }
-  }
+    link.classList.toggle('active', isVisible)
+  })
 }
 
-/* When Scroll */
-window.addEventListener('scroll', function () {
+/* Ao rolar a página, atualiza header, botão e menu */
+window.addEventListener('scroll', () => {
   changeHeaderWhenScroll()
-  backToTop()
+  toggleBackToTopButton()
   activateMenuAtCurrentSection()
 })
