@@ -43,7 +43,6 @@ scrollReveal.reveal(
   `#home .image, #home .text,
   #about .image, #about .text,
   #services header, #services .card,
-  #testimonials header, #testimonials .testimonials
   #contact .text, #contact .links,
   footer .brand, footer .social
   `,
@@ -74,14 +73,13 @@ function activateMenuAtCurrentSection() {
     const checkpointStart = checkpoint >= sectionTop
     const checkpointEnd = checkpoint <= sectionTop + sectionHeight
 
+    const link = document.querySelector('nav ul li a[href*=' + sectionId + ']')
+    if (!link) continue
+
     if (checkpointStart && checkpointEnd) {
-      document
-        .querySelector('nav ul li a[href*=' + sectionId + ']')
-        .classList.add('active')
+      link.classList.add('active')
     } else {
-      document
-        .querySelector('nav ul li a[href*=' + sectionId + ']')
-        .classList.remove('active')
+      link.classList.remove('active')
     }
   }
 }
